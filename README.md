@@ -14,29 +14,22 @@ sudo apt install -y protobuf-compiler grpc-dev libgrpc++-dev
 ```
 ## Checking the Installed Version
 ```sh
-
 protoc --version
+```
+```sh
 which grpc_cpp_plugin (find the path of grpc_cpp_plugin)
-
 ```
 ## Building gRPC and Protobuf
-```sh
 Compiling gRPC Stub from .proto
-
+```sh
 protoc --grpc_out=. --plugin=protoc-gen-grpc=$(which grpc_cpp_plugin) aglcom.proto
-
-(139:) protoc --grpc_out=. --plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin aglcom.proto
-
-Note: Replace /usr/local/bin/grpc_cpp_plugin with the actual path of grpc_cpp_plugin if different.
-
 ```
+Note: Replace /usr/local/bin/grpc_cpp_plugin with the actual path of grpc_cpp_plugin if different.
 ## Compiling Protobuf to C++ Code
 ```sh
 protoc --cpp_out=. aglcom.proto
-
-After running the above commands, you will get .pb.cc and .pb.h files to use in your C++ source code.
-
 ```
+After running the above commands, you will get .pb.cc and .pb.h files to use in your C++ source code.
 ## Building a C++ Program with gRPC
 
 Create a `build` directory, navigate into it, and use `cmake` to generate the necessary build files. Then, compile the project:
